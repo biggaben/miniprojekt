@@ -49,7 +49,7 @@ void labwork( void )
   display_string( 3, textstring );
   display_image(96, icon);
   display_update();
-  
+
   /*
   int buttons = getbtns();
   int switches = getsw();
