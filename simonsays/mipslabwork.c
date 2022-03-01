@@ -41,14 +41,15 @@ void labinit( void )
 /* This function is called repetitively from the main program */
 void labwork( void )
 {
-  delay( 100 );
+  delay( 1000 );
   
 
   /*tick( &mytime );
   *setleds = (*setleds & (~0xff)) | (counter & 0x00ff);
   counter++;
-  display_image(96, icon);*/
-
+  */
+  
+  
   if( getbtns() != 0 ){
     if( getbtns() & 1 ) mytime = (mytime & ~0xf0) | ( getsw() << 4 );
     if( getbtns() & 2 ) mytime = (mytime & ~0xf00) | ( getsw() << 8 );
@@ -57,6 +58,7 @@ void labwork( void )
 
   time2string( textstring, mytime );
   display_string( 3, textstring );
+  display_image(96, icon);
   display_update();
   /*
   int buttons = getbtns();
