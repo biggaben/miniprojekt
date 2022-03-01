@@ -142,7 +142,7 @@ const uint8_t const font[] = {
 	0, 120, 68, 66, 68, 120, 0, 0,
 };
 
-const uint8_t const icon[] = {
+const uint8_t const lil_heart[] = {
 	255, 243, 229, 201, 131, 193, 225, 243,
 };
 

@@ -11,6 +11,8 @@
 #include <pic32mx.h>  /* Declarations of system-specific addresses etc */
 #include "mipslab.h"  /* Declatations for these labs */
 
+char text_intro[] = "GAME\nON";
+
 int main(void) {
         /*
 	  This will set the peripheral bus clock to the same frequency
@@ -56,13 +58,27 @@ int main(void) {
 	
 	display_init();
 
-	display_image(96, icon);
-	
-	display_string(0, "KTH/ICT lab");
-	display_string(1, "in Computer");
-	display_string(2, "Engineering");
-	display_string(3, "Welcome!");
-	display_update();	
+	display_string(0, text_look );
+	display_image(32, square);
+	display_image(64, square);
+	display_image(96, square);
+	delay( 500 );
+
+	for(int i = 0;i<6;i++){
+		display_image(32, square);
+		display_image(64, square);
+		display_image(96, square);
+	}
+
+	display_update();
+	//display_string( 3, textstring );
+	/*tick( &mytime );
+	*setleds = (*setleds & (~0xff)) | (counter & 0x00ff);
+	counter++;
+	*/
+
+	//display_string( 3, textstring );
+	display_update();
 	
 	labinit(); /* Do any lab-specific initialization */
 

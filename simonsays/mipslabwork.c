@@ -15,7 +15,7 @@
 #include "mipslab.h"  /* Declatations for these labs */
 
 int counter = 0;
-char textstring[] = "text, more text, and even more text!";
+char text_look[] = "LOOK";
 volatile int* setleds = (volatile int*) 0xbf886110;
 
 
@@ -38,16 +38,19 @@ void labinit( void )
 /* This function is called repetitively from the main program */
 void labwork( void )
 {
+  display_string(0, text_look );
+  display_image(32, icon);
+  display_image(64, icon);
+  display_image(96, icon);
   delay( 1000 );
   
-
+  //display_string( 3, textstring );
   /*tick( &mytime );
   *setleds = (*setleds & (~0xff)) | (counter & 0x00ff);
   counter++;
   */
 
-  display_string( 3, textstring );
-  display_image(96, icon);
+  //display_string( 3, textstring );
   display_update();
 
   /*
