@@ -58,26 +58,28 @@ int main(void) {
 	
 	display_init();
 
-	display_string(0, text_look );
 	display_image(32, square);
 	display_image(64, square);
 	display_image(96, square);
 	delay( 500 );
-
-	for(int i = 0;i<6;i++){
-		display_image(32, square);
-		display_image(64, square);
-		display_image(96, square);
-	}
-
 	display_update();
-	//display_string( 3, textstring );
-	/*tick( &mytime );
-	*setleds = (*setleds & (~0xff)) | (counter & 0x00ff);
-	counter++;
-	*/
 
-	//display_string( 3, textstring );
+	display_image(32, simon_square);
+	display_image(64, simon_square);
+	display_image(96, simon_square);
+	delay( 500 );
+	display_update();
+
+	display_image(32, square);
+	display_image(64, square);
+	display_image(96, square);
+	delay( 500 );
+	display_update();
+
+	display_image(32, simon_square);
+	display_image(64, simon_square);
+	display_image(96, simon_square);
+	delay( 500 );
 	display_update();
 	
 	labinit(); /* Do any lab-specific initialization */

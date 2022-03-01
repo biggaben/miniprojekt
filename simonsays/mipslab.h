@@ -7,6 +7,20 @@
 
    For copyright and licensing, see file COPYING */
 
+// CUSTOM ADDED SYMBOLS
+// Declare bitmap array containing graphical symbols and text buffer
+
+extern const uint8_t const font[128*8];
+extern const uint8_t const square[128];
+extern const uint8_t const simon_square[128];
+extern const uint8_t const heart[128];
+extern const uint8_t const lil_heart[8];
+extern char textbuffer[4][16];
+//extern char lil_textbuffer[3][12];
+
+// END OF CUSTOM ADDED SYMBOLS
+
+
 /* Declare display-related functions from mipslabfunc.c */
 void display_image(int x, const uint8_t *data);
 void display_init(void);
@@ -17,9 +31,7 @@ uint8_t spi_send_recv(uint8_t data);
 /* Declare lab-related functions from mipslabfunc.c */
 char * itoaconv( int num );
 void labwork(void);
-int nextprime( int inval );
 void quicksleep(int cyc);
-void tick( unsigned int * timep );
 
 /* Declare display_debug - a function to help debugging.
 
@@ -47,9 +59,13 @@ extern char textbuffer[4][16];
    students must define their functions with the exact types
    specified in the laboratory instructions. */
 /* Written as part of asm lab: delay, time2string */
+
+void display_debug( volatile int * const addr );
+
 void delay(int);
-void time2string( char *, int );
+
 /* Written as part of i/o lab: getbtns, getsw, enable_interrupt */
 int getbtns(void);
 int getsw(void);
 void enable_interrupt(void);
+

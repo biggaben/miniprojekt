@@ -39,9 +39,9 @@ void labinit( void )
 void labwork( void )
 {
   display_string(0, text_look );
-  display_image(32, icon);
-  display_image(64, icon);
-  display_image(96, icon);
+  display_image(32, square);
+  display_image(64, square);
+  display_image(96, square);
   delay( 1000 );
   
   //display_string( 3, textstring );
