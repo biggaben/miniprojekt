@@ -86,7 +86,8 @@ srand(time(NULL)); // Initialization, should only be called once.
 
 int generate_random
 {
-  srand() % 3      // Returns a pseudo-random integer between 1 and 3
+  return srand() % 3 + 1;      // Returns a pseudo-random integer between 1 and 3
+
 }
 
 void display_debug( volatile int * const addr )
