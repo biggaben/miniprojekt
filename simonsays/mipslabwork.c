@@ -14,7 +14,6 @@
 #include <pic32mx.h>  /* Declarations of system-specific addresses etc */
 #include "mipslab.h"  /* Declatations for these labs */
 
-int mytime = 0x5957;
 int counter = 0;
 char textstring[] = "text, more text, and even more text!";
 volatile int* setleds = (volatile int*) 0xbf886110;
@@ -32,8 +31,6 @@ void labinit( void )
   volatile int* trisE = (volatile int*) 0xbf886100;
   *trisE = (*trisE & ~(0xff)) | (~(0xff));
 
-  //volatile int* trisD = (volatile int*) 0xbf8860C0;
-  //*trisD = (*trisD | 0x07f0);
   TRISD = TRISD & 0x0EF0; //0x0EF0
   return;
 }
@@ -48,18 +45,11 @@ void labwork( void )
   *setleds = (*setleds & (~0xff)) | (counter & 0x00ff);
   counter++;
   */
-  
-  
-  if( getbtns() != 0 ){
-    if( getbtns() & 1 ) mytime = (mytime & ~0xf0) | ( getsw() << 4 );
-    if( getbtns() & 2 ) mytime = (mytime & ~0xf00) | ( getsw() << 8 );
-    if( getbtns() & 4 ) mytime = (mytime & ~0xf000) | ( getsw() << 12 );
-  }
 
-  time2string( textstring, mytime );
   display_string( 3, textstring );
   display_image(96, icon);
   display_update();
+  
   /*
   int buttons = getbtns();
   int switches = getsw();
