@@ -7,6 +7,8 @@
 #include <stdint.h>   /* Declarations of uint_32 and the like */
 #include <pic32mx.h>  /* Declarations of system-specific addresses etc */
 #include "mipslab.h"  /* Declatations for these labs */
+#include <time.h>
+#include <stdlib.h>
 
 /* Declare a helper function which is local to this file */
 static void num32asc( char * s, int ); 
@@ -80,6 +82,13 @@ void tick( unsigned int * timep )
    repeated calls to display_image; display_image overwrites
    about half of the digits shown by display_debug.
 */   
+
+int randomizer(void){
+  int RAND_MAX = 2;
+  srand(time(NULL));   // Initialization, should only be called once.
+  int r = rand();      // Returns a pseudo-random integer between 0 and RAND_MAX.
+}
+
 void display_debug( volatile int * const addr )
 {
   display_string( 1, "Addr" );
