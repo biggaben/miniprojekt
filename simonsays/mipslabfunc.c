@@ -82,11 +82,11 @@ void tick( unsigned int * timep )
    repeated calls to display_image; display_image overwrites
    about half of the digits shown by display_debug.
 */   
+srand(time(NULL)); // Initialization, should only be called once.
 
-int randomizer(void){
-  int RAND_MAX = 2;
-  srand(time(NULL));   // Initialization, should only be called once.
-  int r = rand();      // Returns a pseudo-random integer between 0 and RAND_MAX.
+int generate_random
+{
+  srand() % 3      // Returns a pseudo-random integer between 1 and 3
 }
 
 void display_debug( volatile int * const addr )
