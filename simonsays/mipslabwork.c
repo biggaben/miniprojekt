@@ -16,6 +16,7 @@
 
 int mytime = 0x5957;
 int counter = 0;
+int light_switch = 0;
 char textstring[] = "text, more text, and even more text!";
 volatile int* setleds = (volatile int*) 0xbf886110;
 
@@ -41,13 +42,21 @@ void labinit( void )
 /* This function is called repetitively from the main program */
 void labwork( void )
 {
-  delay( 100 );
+  delay( 1000 );
+  
+  if(light_switch = 0){
+    *setleds = 0x0000;
+    light_switch = 1;
+  }else if(light_switch = 1){
+    *setleds = 0xffff;
+    light_switch = 0;
+  }
   
 
-  /*tick( &mytime );
-  *setleds = (*setleds & (~0xff)) | (counter & 0x00ff);
+  tick( &mytime );
+  //*setleds = (*setleds & (~0xff)) | (counter & 0x00ff);
   counter++;
-  display_image(96, icon);*/
+  display_image(96, icon);
 
   if( getbtns() != 0 ){
     if( getbtns() & 1 ) mytime = (mytime & ~0xf0) | ( getsw() << 4 );

@@ -67,7 +67,7 @@ int main(void) {
 
 	while( 1 )
 	{
-	  game(); /* Do lab-specific things again and again */
+	  labwork(); /* Do lab-specific things again and again */
 	}
 	return 0;
 }
