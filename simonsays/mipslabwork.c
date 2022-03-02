@@ -13,9 +13,16 @@
 #include <stdint.h>   /* Declarations of uint_32 and the like */
 #include <pic32mx.h>  /* Declarations of system-specific addresses etc */
 #include "mipslab.h"  /* Declatations for these labs */
-#include <string.h>
 
-void *memcpy(void *dest, const void *src, size_t n)
+extern int seed;
+
+int rand(){
+  seed = seed * 1103515245 + 12345;
+  
+  return (unsigned int)(seed/65536) % 3 + 1;
+}
+
+/*void *memcpy(void *dest, const void *src, size_t n)
 {   
   size_t i;
   for (i = 0; i < n; i++)
@@ -23,6 +30,7 @@ void *memcpy(void *dest, const void *src, size_t n)
     ((char*)dest)[i] = ((char*)src)[i];
   }
 }
+*/
 
 char text_next[] = "NEXT";
 volatile int* setleds = (volatile int*) 0xbf886110;
@@ -43,17 +51,69 @@ void labinit( void )
   return;
 }
 
+int pressed_button(){
+  int btn = getbtns();
+  switch(btn){
+    case 4: return 1;
+    case 2: return 2;
+    case 1: return 3;
+    default: return 0;
+  }
+}
+
+#define SEQUENCE_LEN 100 // 100 cause of the memory limitation
+
 /* This function is called repetitively from the main program */
 void labwork( void ){
 
-  int list[14] = {1,2,3,1,3,1,2,2,1,2,1,3,1,2};
   int i;
+
+  int list[SEQUENCE_LEN]; // = {1,2,3,1,3,1,2,2,1,2,1,3,1,2};
+
+  for (i = 0; i < SEQUENCE_LEN; i++)
+    list[i] = rand();
+
+  int level = 1;
   int j;
-  for(i=0;i<13;i++){
+  int end_of_game = 0;
+  int difficulty = 0;
+
+  for(i=0;i < SEQUENCE_LEN;i++){
+ 
+    display_string(0, "LVL:");
+    display_string(1, itoaconv(level));
+    delay(100);
+    display_update();
+    delay(100);
+
     for(j=0;j<=i;j++){
-      show_sequence(list[j]);
+      show_sequence_item(list[j], difficulty);
     }
-    display_image(0, black_square);
+
+    for(j = 0;j<=i;j++){
+      int pressed = 0;
+      while(pressed == 0){
+        pressed = pressed_button();
+        delay(10);
+      }
+
+      if (pressed != list[j]) {
+        display_image(64, heart);
+        display_update();
+        delay(1000);
+        // here display: OUGHHHH!!!! YOU ARE WRONG!
+        end_of_game = 1;
+        break;
+      }
+    }
+
+    if (end_of_game == 1)
+      break;
+
+    level++;
+ 
+
+
     display_image(32, black_square);
     display_image(64, black_square);
     display_image(96, black_square);

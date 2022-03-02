@@ -8,5 +8,8 @@ int getsw( void ){
 }
 int getbtns(void){
     int BTN = ((PORTD>>5) & 0x0007);     //shifting bits so that value 8-5 (BTN4,BTN3,BTN2) is masked and returned
+    while (((PORTD>>5) & 0x0007) != 0)
+        delay(10);
+
     return BTN;
 }

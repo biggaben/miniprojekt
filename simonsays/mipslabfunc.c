@@ -8,8 +8,6 @@
 #include <pic32mx.h>  /* Declarations of system-specific addresses etc */
 #include "mipslab.h"  /* Declatations for these labs */
 //#include <time.h>
-#include <stdlib.h>
-#include <string.h>
 
 /* Declare a helper function which is local to this file */
 static void num32asc( char * s, int ); 
@@ -87,10 +85,6 @@ void tick( unsigned int * timep )
 */   
 //srand(time(NULL)); // Initialization, should only be called once.
 
-int counter(void){
-  time++;
-  return time;
-}
  /*
 void press_to_start(){
   display_string(0, "Press any button/nto start");
@@ -108,30 +102,26 @@ int generate_random(void){
 */
 
 // PRINTS OUT SEQUENCE ON DISPLAY
-int show_sequence(i){
+int show_sequence_item(int i, int difficulty){
   switch(i){
     case 1:
       display_image(32, simon_square);
       display_image(64, square);
       display_image(96, square);
-      delay( 500 );
-      display_update();
       break;
     case 2:
       display_image(32, square);
       display_image(64, simon_square);
       display_image(96, square);
-      delay( 500 );
-      display_update();
       break;
     case 3:
       display_image(32, square);
       display_image(64, square);
       display_image(96, simon_square);
-      delay( 500 );
-      display_update();
       break;
   }
+  delay(500 - difficulty * 30);
+  display_update();
   display_image(32, square);
   display_image(64, square);
   display_image(96, square);

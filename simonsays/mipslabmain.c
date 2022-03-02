@@ -14,7 +14,6 @@
 char text_intro[] = "GAME\nON";
 int seed = 0;
 
-
 int main(void) {
         /*
 	  This will set the peripheral bus clock to the same frequency
@@ -92,15 +91,19 @@ int main(void) {
 
 	labinit(); /* Do any lab-specific initialization */
 
-	/*
 	while(getbtns() == 0){
-		seed = counter();
-		display_string(0, (char *)seed );
-		delay( 500 );
+		seed++;
+		// display_string(0, itoaconv(seed));
+		delay( 50 );
 		display_update();
 	}
-	*/
-
+	
+	display_string(0, "HI");
+   display_string(1, "0");
+   delay(100);
+   display_update();
+ 	delay(100);
+	
 	while( 1 )
 	{
 		/*
@@ -108,7 +111,8 @@ int main(void) {
 		delay( 500 );
 		display_update();
 		*/
-		labwork(); /* Do lab-specific things again and again */
+	
+   	labwork(); /* Do lab-specific things again and again */
 	}
 	return 0;
 }
