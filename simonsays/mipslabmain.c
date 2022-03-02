@@ -12,7 +12,7 @@
 #include "mipslab.h"  /* Declatations for these labs */
 
 char text_intro[] = "GAME\nON";
-int time = 0;
+
 
 
 int main(void) {
@@ -90,9 +90,16 @@ int main(void) {
 	
 	labinit(); /* Do any lab-specific initialization */
 
+	int seed = 0;
+	while(getbtns() = 0){
+		counter();
+	}
+
+	press_to_start();	// Start timer
+
+
 	while( 1 )
 	{
-		start_timer();	// Start timer
 		labwork(); /* Do lab-specific things again and again */
 	}
 	return 0;

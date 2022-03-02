@@ -7,7 +7,7 @@
 #include <stdint.h>   /* Declarations of uint_32 and the like */
 #include <pic32mx.h>  /* Declarations of system-specific addresses etc */
 #include "mipslab.h"  /* Declatations for these labs */
-#include <time.h>
+//#include <time.h>
 #include <stdlib.h>
 
 /* Declare a helper function which is local to this file */
@@ -83,12 +83,12 @@ void tick( unsigned int * timep )
    about half of the digits shown by display_debug.
 */   
 //srand(time(NULL)); // Initialization, should only be called once.
-
-int start_timer(void){
-  while( 1 ){
+int time = 0;
+int counter(){
+  if(press = 0){
     time++;
   }
-  return;
+  return time;
 }
 
 /*
