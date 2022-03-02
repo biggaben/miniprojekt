@@ -91,13 +91,14 @@ int counter(void){
   time++;
   return time;
 }
-
+ /*
 void press_to_start(){
   display_string(0, "Press any button/nto start");
   display_update;
   if(getbtns() != 0)
     seed = counter;
 }
+*/
 
 /*
 int generate_random(void){
