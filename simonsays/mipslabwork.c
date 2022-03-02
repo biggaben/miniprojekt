@@ -14,10 +14,8 @@
 #include <pic32mx.h>  /* Declarations of system-specific addresses etc */
 #include "mipslab.h"  /* Declatations for these labs */
 
-int counter = 0;
 char text_look[] = "LOOK";
 volatile int* setleds = (volatile int*) 0xbf886110;
-
 
 /* Interrupt Service Routine */
 void user_isr( void )
@@ -38,35 +36,13 @@ void labinit( void )
 /* This function is called repetitively from the main program */
 void labwork( void )
 {
-  display_string(0, text_look );
+  
+  display_string(0, (char*)time );
   display_image(32, square);
   display_image(64, square);
   display_image(96, square);
   delay( 1000 );
   
-  //display_string( 3, textstring );
-  /*tick( &mytime );
-  *setleds = (*setleds & (~0xff)) | (counter & 0x00ff);
-  counter++;
-  */
-
-  //display_string( 3, textstring );
   display_update();
 
-  /*
-  int buttons = getbtns();
-  int switches = getsw();
-    if (buttons != 0)
-    {
-       int switches = getsw() << 4;
-    }
-  int leds = switches | buttons;
-
-  *setleds = leds;
-  */
 }
-
-/*
-  Lampor kräver 8 bitar = 128 i decimalform = 2 HEXdecimaltal
-  0 -> 15 = 0 -> F
-*/

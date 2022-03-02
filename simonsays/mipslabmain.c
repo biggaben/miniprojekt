@@ -12,6 +12,8 @@
 #include "mipslab.h"  /* Declatations for these labs */
 
 char text_intro[] = "GAME\nON";
+int time = 0;
+
 
 int main(void) {
         /*
@@ -90,7 +92,8 @@ int main(void) {
 
 	while( 1 )
 	{
-	  labwork(); /* Do lab-specific things again and again */
+		start_timer();	// Start timer
+		labwork(); /* Do lab-specific things again and again */
 	}
 	return 0;
 }
