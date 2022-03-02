@@ -11,6 +11,7 @@
 // Declare bitmap array containing graphical symbols and text buffer
 
 extern const uint8_t const font[128*8];
+extern const uint8_t const black_square[128];
 extern const uint8_t const square[128];
 extern const uint8_t const simon_square[128];
 extern const uint8_t const heart[128];

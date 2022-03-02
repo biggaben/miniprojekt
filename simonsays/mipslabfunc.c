@@ -9,6 +9,7 @@
 #include "mipslab.h"  /* Declatations for these labs */
 //#include <time.h>
 #include <stdlib.h>
+#include <string.h>
 
 /* Declare a helper function which is local to this file */
 static void num32asc( char * s, int ); 
@@ -24,6 +25,8 @@ static void num32asc( char * s, int );
 
 #define DISPLAY_TURN_OFF_VDD (PORTFSET = 0x40)
 #define DISPLAY_TURN_OFF_VBAT (PORTFSET = 0x20)
+
+int time = 0;
 
 /* quicksleep:
    A simple function to create a small delay.
@@ -83,11 +86,9 @@ void tick( unsigned int * timep )
    about half of the digits shown by display_debug.
 */   
 //srand(time(NULL)); // Initialization, should only be called once.
-int time = 0;
-int counter(){
-  if(press = 0){
-    time++;
-  }
+
+int counter(void){
+  time++;
   return time;
 }
 
@@ -97,6 +98,38 @@ int generate_random(void){
   return r;      // Returns a pseudo-random integer between 1 and 3
 }
 */
+
+// PRINTS OUT SEQUENCE ON DISPLAY
+int show_sequence(i){
+  switch(i){
+    case 1:
+      display_image(32, simon_square);
+      display_image(64, square);
+      display_image(96, square);
+      delay( 500 );
+      display_update();
+      break;
+    case 2:
+      display_image(32, square);
+      display_image(64, simon_square);
+      display_image(96, square);
+      delay( 500 );
+      display_update();
+      break;
+    case 3:
+      display_image(32, square);
+      display_image(64, square);
+      display_image(96, simon_square);
+      delay( 500 );
+      display_update();
+      break;
+  }
+  display_image(32, square);
+  display_image(64, square);
+  display_image(96, square);
+  delay( 150 );
+  display_update();
+}
 
 void display_debug( volatile int * const addr )
 {

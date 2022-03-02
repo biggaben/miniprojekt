@@ -13,8 +13,18 @@
 #include <stdint.h>   /* Declarations of uint_32 and the like */
 #include <pic32mx.h>  /* Declarations of system-specific addresses etc */
 #include "mipslab.h"  /* Declatations for these labs */
+#include <string.h>
 
-char text_look[] = "LOOK";
+void *memcpy(void *dest, const void *src, size_t n)
+{   
+  size_t i;
+  for (i = 0; i < n; i++)
+  {
+    ((char*)dest)[i] = ((char*)src)[i];
+  }
+}
+
+char text_next[] = "NEXT";
 volatile int* setleds = (volatile int*) 0xbf886110;
 
 /* Interrupt Service Routine */
@@ -34,15 +44,22 @@ void labinit( void )
 }
 
 /* This function is called repetitively from the main program */
-void labwork( void )
-{
-  
-  display_string(0, (char*)time );
-  display_image(32, square);
-  display_image(64, square);
-  display_image(96, square);
-  delay( 1000 );
+void labwork( void ){
+
+  int list[14] = {1,2,3,1,3,1,2,2,1,2,1,3,1,2};
+  int i;
+  int j;
+  for(i=0;i<13;i++){
+    for(j=0;j<=i;j++){
+      show_sequence(list[j]);
+    }
+    display_image(0, black_square);
+    display_image(32, black_square);
+    display_image(64, black_square);
+    display_image(96, black_square);
+    delay( 200 );
+    display_update();
+  }
   
   display_update();
-
 }
