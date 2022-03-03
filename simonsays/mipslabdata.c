@@ -240,8 +240,6 @@ const uint8_t const dead1[] = {
 	0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 3,
 
-}
+};
 
-const uint8_t const dead2[] = {
-}
 

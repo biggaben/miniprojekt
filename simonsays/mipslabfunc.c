@@ -103,6 +103,7 @@ int generate_random(void){
 
 // PRINTS OUT SEQUENCE ON DISPLAY
 int show_sequence_item(int i, int difficulty){
+  int diff = difficulty;
   switch(i){
     case 1:
       display_image(32, simon_square);
@@ -120,12 +121,13 @@ int show_sequence_item(int i, int difficulty){
       display_image(96, simon_square);
       break;
   }
-  delay(500 - difficulty * 30);
+  delay(400 - (diff * 50));
   display_update();
+
   display_image(32, square);
   display_image(64, square);
   display_image(96, square);
-  delay( 150 );
+  delay(200 - (diff * 25));
   display_update();
 }
 

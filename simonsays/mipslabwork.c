@@ -51,6 +51,17 @@ void labinit( void )
   return;
 }
 
+int flipped_switch(){
+  int flipped = getsw();
+  switch(flipped){
+    case 8: return 1;
+    case 4: return 2;
+    case 2: return 3;
+    case 1: return 4;
+    default: return 0;
+  }
+}
+
 int pressed_button(){
   int btn = getbtns();
   switch(btn){
@@ -76,7 +87,7 @@ void labwork( void ){
   int level = 1;
   int j;
   int end_of_game = 0;
-  int difficulty = 0;
+  int difficulty = flipped_switch();
 
   for(i=0;i < SEQUENCE_LEN;i++){
  
@@ -98,11 +109,9 @@ void labwork( void ){
       }
 
       if (pressed != list[j]) {
-        display_string(0,"DEAD  DEAD  DEAD");
-        //display_string(1,"DEAD  DEAD  DEAD");
-        display_string(2,"DEAD  DEAD  DEAD");
+        display_image(0,dead1);
         //display_string(3,"DEAD  DEAD  DEAD");
-        delay(100);
+        delay(1000);
         display_update();
         delay(1000);
         // here display: OUGHHHH!!!! YOU ARE WRONG!
@@ -114,10 +123,6 @@ void labwork( void ){
     level++;
 
     if (end_of_game == 1){
-      display_string(0,"");
-      display_string(2,"");
-      delay(100);
-      display_update();
       level = 0;
       break;
     }
@@ -133,6 +138,9 @@ void labwork( void ){
     display_image(64, black_square);
     display_image(96, black_square);
     delay( 200 );
+    display_update();
+    display_string(3, "YOUR TURN!");
+    delay( 100 );
     display_update();
   }
   

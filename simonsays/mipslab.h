@@ -16,6 +16,7 @@ extern const uint8_t const square[128];
 extern const uint8_t const simon_square[128];
 extern const uint8_t const heart[128];
 extern const uint8_t const lil_heart[8];
+extern const uint8_t const dead1[128];
 extern char textbuffer[4][16];
 //extern char lil_textbuffer[3][12];
 
