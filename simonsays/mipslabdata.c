@@ -1,8 +1,8 @@
-/* mipslabdata.c
-   This file edited by Marta K Gludkowska 2022
-   from original code written by Axel Isaksson
+/* 
+  	This file written/modified 2022 by Marta K Gludkowska and David Holmertz
+	For the course Datorteknik at KTH 
+*/
 
-   For copyright and licensing, see file COPYING */
 
 #include <stdint.h>   /* Declarations of uint_32 and the like */
 #include <pic32mx.h>  /* Declarations of system-specific addresses etc */
@@ -157,8 +157,7 @@ const uint8_t const heart[] = {
 	255, 255, 255, 255, 255, 255, 255, 255,
 	255, 255, 255, 255, 255, 255, 255, 255,
 	254, 252, 248, 240, 224, 240, 248, 252,
-	254, 255, 255, 255, 255, 255, 255, 255, 
-	255, 255, 255, 255, 255, 255, 255, 255,
+	254, 255, 255, 255, 255, 255, 255, 255,
 };
 
 

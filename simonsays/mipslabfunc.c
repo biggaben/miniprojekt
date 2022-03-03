@@ -1,8 +1,7 @@
-/* mipslabfunc.c
-   This file written 2015 by F Lundevall
-   Some parts are original code written by Axel Isaksson
-
-   For copyright and licensing, see file COPYING */
+/* 
+  This file written/modified 2022 by Marta K Gludkowska and David Holmertz
+	For the course Datorteknik at KTH 
+*/
 
 #include <stdint.h>   /* Declarations of uint_32 and the like */
 #include <pic32mx.h>  /* Declarations of system-specific addresses etc */
@@ -101,9 +100,18 @@ int generate_random(void){
 }
 */
 
+int flipped_switch(){
+  int flipped = getsw();
+  switch(flipped){
+    case 4: return 1;
+    case 2: return 2;
+    case 1: return 3;
+    default: return 0;
+  }
+}
+
 // PRINTS OUT SEQUENCE ON DISPLAY
 int show_sequence_item(int i, int difficulty){
-  int diff = difficulty;
   switch(i){
     case 1:
       display_image(32, simon_square);
@@ -121,13 +129,14 @@ int show_sequence_item(int i, int difficulty){
       display_image(96, simon_square);
       break;
   }
-  delay(400 - (diff * 50));
-  display_update();
 
+  delay(1000 - (difficulty * 300));
+
+  display_update();
   display_image(32, square);
   display_image(64, square);
   display_image(96, square);
-  delay(200 - (diff * 25));
+  delay(100);
   display_update();
 }
 

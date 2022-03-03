@@ -1,26 +1,23 @@
-/* mipslabmain.c
-
-   This file written 2015 by Axel Isaksson,
-   modified 2015, 2017 by F Lundevall
-
-   Latest update 2017-04-21 by F Lundevall
-
-   For copyright and licensing, see file COPYING */
+/* 
+   This file written/modified 2022 by Marta K Gludkowska and David Holmertz
+	For the course Datorteknik at KTH 
+*/
 
 #include <stdint.h>   /* Declarations of uint_32 and the like */
 #include <pic32mx.h>  /* Declarations of system-specific addresses etc */
-#include "mipslab.h"  /* Declatations for these labs */
+#include "mipslab.h"  /* Declatations for the game */
 
 char text_intro[] = "Simon says, u do.";
 char text_press_to_play[] = "Press to play.";
+char text_setdif[] = "Set difficulty";
 int seed = 0;
+int switch_flipped = 0;
+int lives = 0;
+int level = 0;
+int high_score = 0;
+int initialize_leds = 1;
 
 int main(void) {
-        /*
-	  This will set the peripheral bus clock to the same frequency
-	  as the sysclock. That means 80 MHz, when the microcontroller
-	  is running at 80 MHz. Changed 2017, as recommended by Axel.
-	*/
 	SYSKEY = 0xAA996655;  /* Unlock OSCCON, step 1 */
 	SYSKEY = 0x556699AA;  /* Unlock OSCCON, step 2 */
 	while(OSCCON & (1 << 21)); /* Wait until PBDIV ready */
@@ -60,34 +57,61 @@ int main(void) {
 	
 	display_init();
 
-	labinit(); /* Do any lab-specific initialization */
+	labinit(); /* Initializations */
 
-	delay(150);
-	display_string(0, text_intro);
-	display_string(2, text_press_to_play);
-	delay(150);
+	while (1) {
+		lives = 1;
+		level = 1;
 
-	display_update();
+		for(initialize_leds = 1; initialize_leds <= 256; initialize_leds *= 2){
+			setleds(initialize_leds - 1);
+			delay(50);
+		}
 
-	while(getbtns() == 0){
-		seed++;
-		// display_string(0, itoaconv(seed));
-	}
-	display_string(0, "");
-	display_string(2, "");
-	delay( 150 );
-	display_update();
- 	delay(200);
-	
-	while( 1 )
-	{
-		/*
-		display_string(0, (char*)seed ); 
-		delay( 500 );
+		clear_display();
+		display_string(0, text_intro);
+		display_string(1, text_setdif);
+		display_string(3, text_press_to_play);
+		delay(150);
 		display_update();
-		*/
+
+		while(getbtns() == 0) {
+			seed++;
+		}
 	
-   	labwork(); /* Do lab-specific things again and again */
-	}
+		switch_flipped = flipped_switch();
+
+		clear_display();
+	
+		while(lives >= 0) {
+   		labwork(); /* Game loop*/
+		}
+
+   	display_image(32,dead1);
+   	display_image(64,dead2);
+   	
+   	int i;
+   	for(i = 0; i < 10; i++){
+   		setleds(0xff);
+   		delay(50);
+   		setleds(0x00);
+   		delay(50);	
+   	}
+   	
+   	display_update();
+   	clear_display();
+
+   	if (level > high_score)
+   		high_score = level;
+
+   	display_string(0, "Score:");
+   	display_string(1, itoaconv(level));
+   	display_string(2, "High score:");
+   	display_string(3, itoaconv(high_score));
+   	delay(100);
+   	display_update();
+   	delay(1500);
+	}	
+	
 	return 0;
 }
