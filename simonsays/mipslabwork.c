@@ -98,7 +98,11 @@ void labwork( void ){
       }
 
       if (pressed != list[j]) {
-        display_image(64, heart);
+        display_string(0,"DEAD  DEAD  DEAD");
+        //display_string(1,"DEAD  DEAD  DEAD");
+        display_string(2,"DEAD  DEAD  DEAD");
+        //display_string(3,"DEAD  DEAD  DEAD");
+        delay(100);
         display_update();
         delay(1000);
         // here display: OUGHHHH!!!! YOU ARE WRONG!
@@ -107,10 +111,21 @@ void labwork( void ){
       }
     }
 
-    if (end_of_game == 1)
-      break;
-
     level++;
+
+    if (end_of_game == 1){
+      display_string(0,"");
+      display_string(2,"");
+      delay(100);
+      display_update();
+      level = 0;
+      break;
+    }
+
+    if (end_of_game == 1){
+      end_of_game = 0;
+      main();
+    }
  
 
 
