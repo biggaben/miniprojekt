@@ -60,7 +60,7 @@ int show_sequence_item(int i, int difficulty){
       break;
   }
 
-  delay(800 - (difficulty * 220));
+  delay(600 - (difficulty * 180));
 
   display_update();
   display_image(32, square);

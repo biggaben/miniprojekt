@@ -136,7 +136,9 @@ void labwork( void ){
 
     if (life_lost == 0) { 
       display_image(96, heart);
-      delay( 200 );   
+      delay(200);
+      display_update();
+      delay(100);   
       level++;
       i++;
     }
