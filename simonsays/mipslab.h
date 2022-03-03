@@ -17,6 +17,7 @@ extern const uint8_t const simon_square[128];
 extern const uint8_t const heart[128];
 extern const uint8_t const lil_heart[8];
 extern const uint8_t const dead1[128];
+extern const uint8_t const dead2[128];
 extern char textbuffer[4][16];
 //extern char lil_textbuffer[3][12];
 
@@ -26,6 +27,7 @@ void display_image(int x, const uint8_t *data);
 void display_init(void);
 void display_string(int line, char *s);
 void display_update(void);
+void clear_display(void);
 uint8_t spi_send_recv(uint8_t data);
 
 /* Declare lab-related functions from mipslabfunc.c */

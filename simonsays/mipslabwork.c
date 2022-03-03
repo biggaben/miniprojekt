@@ -99,7 +99,14 @@ void labwork( void ){
 
     for(j=0;j<=i;j++){
       show_sequence_item(list[j], difficulty);
+
     }
+    
+    display_string(3, "YOUR TURN!");
+    delay( 100 );
+    display_update();
+    delay( 300 );
+    clear_display();
 
     for(j = 0;j<=i;j++){
       int pressed = 0;
@@ -109,8 +116,9 @@ void labwork( void ){
       }
 
       if (pressed != list[j]) {
-        display_image(0,dead1);
-        //display_string(3,"DEAD  DEAD  DEAD");
+        clear_display();
+        display_image(32,dead1);
+        display_image(64,dead2);
         delay(1000);
         display_update();
         delay(1000);
@@ -132,16 +140,13 @@ void labwork( void ){
       main();
     }
  
-
-
-    display_image(32, black_square);
+    clear_display();
+    /*display_image(32, black_square);
     display_image(64, black_square);
     display_image(96, black_square);
     delay( 200 );
-    display_update();
-    display_string(3, "YOUR TURN!");
-    delay( 100 );
-    display_update();
+    display_update();*/
+
   }
   
   display_update();

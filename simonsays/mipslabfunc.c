@@ -254,6 +254,20 @@ void display_update(void) {
 	}
 }
 
+void clear_display(void){
+
+		display_image(0, black_square);
+		display_image(32, black_square);
+    display_image(64, black_square);
+    display_image(96, black_square);
+    display_string(0, "");
+    display_string(1, "");
+    display_string(2, "");
+    display_string(3, "");
+    delay( 200 );
+    display_update();
+    }
+
 /* Helper function, local to this file.
    Converts a number to hexadecimal ASCII digits. */
 static void num32asc( char * s, int n ) 
