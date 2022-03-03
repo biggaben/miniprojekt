@@ -59,35 +59,6 @@ int main(void) {
 	SPI2CONSET = 0x8000;
 	
 	display_init();
-	/*
-	//display_string(0, (char*)generate_random() );
-	display_image(32, square);
-	display_image(64, square);
-	display_image(96, square);
-	delay( 500 );
-	display_update();
-
-	//display_string(0, (char*)generate_random() );
-	display_image(32, simon_square);
-	display_image(64, simon_square);
-	display_image(96, simon_square);
-	delay( 500 );
-	display_update();
-
-	//display_string(0, (char*)generate_random() );
-	display_image(32, square);
-	display_image(64, square);
-	display_image(96, square);
-	delay( 500 );
-	display_update();
-
-	//display_string(0, (char*)generate_random() );
-	display_image(32, simon_square);
-	display_image(64, simon_square);
-	display_image(96, simon_square);
-	delay( 500 );
-	display_update();
-	*/
 
 	labinit(); /* Do any lab-specific initialization */
 

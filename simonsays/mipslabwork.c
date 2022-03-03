@@ -81,7 +81,7 @@ void labwork( void ){
   for(i=0;i < SEQUENCE_LEN;i++){
  
     display_string(0, "LVL:");
-    display_string(1, itoaconv(level));
+    display_string(2, itoaconv(level));
     delay(100);
     display_update();
     delay(100);
