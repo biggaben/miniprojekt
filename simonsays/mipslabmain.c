@@ -11,7 +11,8 @@
 #include <pic32mx.h>  /* Declarations of system-specific addresses etc */
 #include "mipslab.h"  /* Declatations for these labs */
 
-char text_intro[] = "GAME\nON";
+char text_intro[] = "Simon says, u do.";
+char text_press_to_play[] = "Press to play.";
 int seed = 0;
 
 int main(void) {
@@ -87,22 +88,25 @@ int main(void) {
 	delay( 500 );
 	display_update();
 	*/
-	display_update();
 
 	labinit(); /* Do any lab-specific initialization */
+
+	delay(150);
+	display_string(0, text_intro);
+	display_string(2, text_press_to_play);
+	delay(150);
+
+	display_update();
 
 	while(getbtns() == 0){
 		seed++;
 		// display_string(0, itoaconv(seed));
-		delay( 50 );
-		display_update();
 	}
-	
-	display_string(0, "HI");
-   display_string(1, "0");
-   delay(100);
-   display_update();
- 	delay(100);
+	display_string(0, "");
+	display_string(2, "");
+	delay( 150 );
+	display_update();
+ 	delay(200);
 	
 	while( 1 )
 	{
