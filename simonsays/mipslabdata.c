@@ -3,13 +3,11 @@
 	For the course Datorteknik at KTH 
 */
 
-
 #include <stdint.h>   /* Declarations of uint_32 and the like */
 #include <pic32mx.h>  /* Declarations of system-specific addresses etc */
 #include "mipslab.h"  /* Declatations for these labs */
 
 char textbuffer[4][16];
-/*char lil_textbuffer[3][12]; for the heart without the 4th line*/
 
 const uint8_t const font[] = {
 	0, 0, 0, 0, 0, 0, 0, 0,
@@ -142,24 +140,24 @@ const uint8_t const font[] = {
 	0, 120, 68, 66, 68, 120, 0, 0,
 };
 
-const uint8_t const lil_heart[] = {
-	255, 243, 229, 201, 131, 193, 225, 243,
-};
-
 const uint8_t const heart[] = {
+	255, 243, 229, 201, 131, 193, 225, 243,
+	255, 243, 229, 201, 131, 193, 225, 243,
+	255, 255, 255, 255, 255, 255, 255, 255,
+	255, 255, 255, 255, 255, 255, 255, 255,
 	255, 255, 255, 63, 15, 7, 67, 35,
 	3, 3, 7, 15, 63, 15, 7, 3,
 	3, 3, 3, 7, 15, 63, 255, 255,
 	255, 255, 255, 255, 255, 255, 255, 255,
-	255, 255, 255, 254, 248, 224, 192,
+	255, 255, 255, 254, 248, 224, 192, 0,
 	0, 0, 0, 0, 0, 0, 0, 0,
 	16, 8, 192, 224, 248, 254, 255, 255,
 	255, 255, 255, 255, 255, 255, 255, 255,
 	255, 255, 255, 255, 255, 255, 255, 255,
 	254, 252, 248, 240, 224, 240, 248, 252,
 	254, 255, 255, 255, 255, 255, 255, 255,
+	255, 255, 255, 255, 255, 255, 255, 255,
 };
-
 
 const uint8_t const black_square[] = {
 	0, 0, 0, 0, 0, 0, 0, 0,
@@ -180,7 +178,6 @@ const uint8_t const black_square[] = {
 	0, 0, 0, 0, 0, 0, 0, 0,
 };
 
-
 const uint8_t const square[] = {
 	255, 31, 7, 251, 9, 9, 9, 9,
 	9, 9, 9, 9, 9, 9, 9, 9,
@@ -199,8 +196,6 @@ const uint8_t const square[] = {
 	144, 144, 144, 144, 144, 144, 144, 144,
 	144, 144, 144, 144, 223, 224, 248, 255,
 };
-
-
 
 const uint8_t const simon_square[] = {
 	255, 31, 7, 251, 249, 249, 249, 249,
@@ -240,7 +235,6 @@ const uint8_t const dead1[] = {
 	0, 0, 0, 0, 0, 0, 0, 3,
 
 };
-
 
 const uint8_t const dead2[] = {
 	0, 0, 0, 0, 0, 0, 0, 0, 

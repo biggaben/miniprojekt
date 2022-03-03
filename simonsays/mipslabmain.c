@@ -60,7 +60,7 @@ int main(void) {
 	labinit(); /* Initializations */
 
 	while (1) {
-		lives = 1;
+		lives = 8;
 		level = 1;
 
 		for(initialize_leds = 1; initialize_leds <= 256; initialize_leds *= 2){

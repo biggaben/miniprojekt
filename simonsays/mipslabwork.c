@@ -18,9 +18,6 @@ int rand(){
   return (unsigned int)(seed/65536) % 3 + 1;
 }
 
-char text_next[] = "NEXT";
-/*volatile int* setleds = (volatile int*) 0xbf886110;*/
-
 /* Interrupt Service Routine */
 void user_isr( void )
 {
@@ -109,18 +106,14 @@ void labwork( void ){
     }
     
     display_string(3, "YOUR TURN!");
-    delay( 100 );
+    delay( 200 );
     display_update();
-    delay( 300 );
+    delay( 200 );
     clear_display();
 
     for(j = 0;j<=i;j++){
       int pressed = 0;
       int switched = 0;
-
-      /*while(switched == 0){
-        switched = flipped_switch();
-        delay(10);*/
 
       while(pressed == 0){
         pressed = pressed_button();
@@ -141,7 +134,9 @@ void labwork( void ){
 
     show_lives(lives);
 
-    if (life_lost == 0) {    
+    if (life_lost == 0) { 
+      display_image(96, heart);
+      delay( 200 );   
       level++;
       i++;
     }
